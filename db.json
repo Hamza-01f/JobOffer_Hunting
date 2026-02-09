@@ -1,3 +1,18 @@
 {
-    "users":[]
+  "users": [
+    {
+      "firstName": "hamza",
+      "lastName": "boumanjel",
+      "email": "hamza@gmail.com",
+      "password": "123456",
+      "id": 1
+    },
+    {
+      "firstName": "ahmded",
+      "lastName": "hammodan",
+      "email": "ahmed@gmail.com",
+      "password": "aze",
+      "id": 2
+    }
+  ]
 }

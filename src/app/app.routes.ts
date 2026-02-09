@@ -4,6 +4,7 @@ import { Landing } from './features/jobs/pages/landing/landing';
 import { Login } from './features/auth/login/login';
 import { Register } from './features/auth/register/register';
 import { Features } from './features/features';
+import { Home } from './features/jobs/pages/home/home';
 
 export const routes: Routes = [
     {
@@ -13,6 +14,10 @@ export const routes: Routes = [
             {
                 path : '',
                 component : Landing
+            },
+            {
+                path : 'home',
+                component : Home
             }
         ]
     },

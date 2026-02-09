@@ -27,11 +27,28 @@ export class Register  implements OnInit{
       return;
     }
 
-    const user: Register = this.RegisterForm.value;
-    this.auth.registerUser(user).subscribe(() => {
+    const user = this.RegisterForm.value;
+
+    this.auth.checkEmail(user.email).subscribe(existing => {
+
+        if(existing.length > 0 ){
+          this.RegisterForm.get('email')?.setErrors({emailExists : true});
+          return;
+        }
+
+        this.auth.registerUser(user).subscribe({
+        next: () => {
+            this.rout.navigate(['/login']);
+        },
+        error: err => {
+          console.log(err); 
+        }
+       
+        });
+
+    
     });
 
-    this.rout.navigate(['/login']);
 
   }
 

@@ -43,6 +43,11 @@
           <h2 class="form-title">Inscription</h2>
           <p class="form-subtitle">Remplissez les informations ci-dessous pour créer votre compte</p>
         </div>
+        <span class="form-error" *ngIf="RegisterForm.get('email')?.touched && RegisterForm.get('email')?.errors">
+        <ng-container *ngIf="RegisterForm.get('email')?.errors?.['required']" >Email is required</ng-container>
+        <ng-container *ngIf="RegisterForm.get('email')?.errors?.['email']">Email invalid </ng-container>
+        <ng-container *ngIf="RegisterForm.get('email')?.errors?.['emailExists']">Email has already exist</ng-container>
+        </span>
 
         <form class="auth-form" [formGroup]="RegisterForm" (ngSubmit)="register()">
           <!-- Name Fields Row -->
