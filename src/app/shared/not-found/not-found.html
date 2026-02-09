@@ -1,1 +1,120 @@
-<p>not-found works!</p>
+
+<div class="not-found-page">
+  <div class="not-found-container">
+    <!-- Animated 404 -->
+    <div class="error-visual">
+      <div class="error-code">
+        <span class="digit digit-1">4</span>
+        <span class="digit digit-0">
+          <svg class="zero-icon" width="120" height="120" viewBox="0 0 120 120">
+            <circle cx="60" cy="60" r="50" stroke="url(#gradient404)" stroke-width="8" fill="none" stroke-dasharray="314" stroke-dashoffset="0">
+              <animateTransform
+                attributeName="transform"
+                attributeType="XML"
+                type="rotate"
+                from="0 60 60"
+                to="360 60 60"
+                dur="3s"
+                repeatCount="indefinite"/>
+            </circle>
+            <defs>
+              <linearGradient id="gradient404" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#2563eb"/>
+                <stop offset="100%" stop-color="#1e40af"/>
+              </linearGradient>
+            </defs>
+          </svg>
+        </span>
+        <span class="digit digit-4">4</span>
+      </div>
+    </div>
+
+    <!-- Error Content -->
+    <div class="error-content">
+      <h1 class="error-title">Page introuvable</h1>
+      <p class="error-message">
+        Oups! La page que vous recherchez semble avoir disparu. Elle a peut-être été déplacée ou n'existe plus.
+      </p>
+
+      <!-- Suggestions -->
+      <div class="error-suggestions">
+        <h3 class="suggestions-title">Que souhaitez-vous faire?</h3>
+        <div class="suggestions-grid">
+          <a href="/" class="suggestion-card">
+            <div class="suggestion-icon">
+              <svg width="32" height="32" viewBox="0 0 20 20" fill="currentColor">
+                <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"/>
+              </svg>
+            </div>
+            <h4 class="suggestion-title">Retour à l'accueil</h4>
+            <p class="suggestion-text">Retournez à la page d'accueil</p>
+          </a>
+
+          <a href="/jobs" class="suggestion-card">
+            <div class="suggestion-icon">
+              <svg width="32" height="32" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"/>
+              </svg>
+            </div>
+            <h4 class="suggestion-title">Rechercher un emploi</h4>
+            <p class="suggestion-text">Parcourez nos offres d'emploi</p>
+          </a>
+
+          <a href="/favorites" class="suggestion-card">
+            <div class="suggestion-icon">
+              <svg width="32" height="32" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"/>
+              </svg>
+            </div>
+            <h4 class="suggestion-title">Mes favoris</h4>
+            <p class="suggestion-text">Consultez vos offres sauvegardées</p>
+          </a>
+
+          <a href="/applications" class="suggestion-card">
+            <div class="suggestion-icon">
+              <svg width="32" height="32" viewBox="0 0 20 20" fill="currentColor">
+                <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z"/>
+                <path fill-rule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z" clip-rule="evenodd"/>
+              </svg>
+            </div>
+            <h4 class="suggestion-title">Mes candidatures</h4>
+            <p class="suggestion-text">Suivez vos candidatures</p>
+          </a>
+        </div>
+      </div>
+
+      <!-- Additional Help -->
+      <div class="error-help">
+        <p class="help-text">
+          Besoin d'aide? 
+          <a href="#" class="help-link">Contactez notre support</a>
+        </p>
+      </div>
+
+      <!-- Search Bar -->
+      <div class="error-search">
+        <form class="search-form">
+          <div class="search-wrapper">
+            <svg class="search-icon" width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"/>
+            </svg>
+            <input 
+              type="text" 
+              class="search-input" 
+              placeholder="Rechercher sur JobFinder..."
+            />
+            <button type="submit" class="btn btn-primary btn-sm">Rechercher</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Decorative Elements -->
+    <div class="floating-shapes">
+      <div class="shape shape-1"></div>
+      <div class="shape shape-2"></div>
+      <div class="shape shape-3"></div>
+      <div class="shape shape-4"></div>
+    </div>
+  </div>
+</div>

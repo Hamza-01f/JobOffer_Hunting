@@ -1,1 +1,256 @@
-<p>home works!</p>
+
+<div class="dashboard-page">
+  <!-- Welcome Banner -->
+  <section class="welcome-banner">
+    <div class="container">
+      <div class="banner-content">
+        <div class="welcome-text">
+          <h1 class="welcome-title">Bon retour, Jean Dupont! 👋</h1>
+          <p class="welcome-subtitle">Voici un résumé de votre activité et des nouvelles opportunités pour vous.</p>
+        </div>
+        <div class="welcome-actions">
+          <a href="/jobs" class="btn btn-primary">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"/>
+            </svg>
+            Rechercher des emplois
+          </a>
+          <a href="/profile" class="btn btn-outline">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"/>
+            </svg>
+            Mon profil
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Cards -->
+  <section class="stats-section">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-icon" style="background-color: rgba(37, 99, 235, 0.1);">
+            <svg width="24" height="24" viewBox="0 0 20 20" fill="#2563eb">
+              <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"/>
+            </svg>
+          </div>
+          <div class="stat-info">
+            <h3 class="stat-number">12</h3>
+            <p class="stat-label">Offres favorites</p>
+          </div>
+          <a href="/favorites" class="stat-link">Voir tout →</a>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon" style="background-color: rgba(16, 185, 129, 0.1);">
+            <svg width="24" height="24" viewBox="0 0 20 20" fill="#10b981">
+              <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z"/>
+              <path fill-rule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z" clip-rule="evenodd"/>
+            </svg>
+          </div>
+          <div class="stat-info">
+            <h3 class="stat-number">8</h3>
+            <p class="stat-label">Candidatures actives</p>
+          </div>
+          <a href="/applications" class="stat-link">Gérer →</a>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon" style="background-color: rgba(245, 158, 11, 0.1);">
+            <svg width="24" height="24" viewBox="0 0 20 20" fill="#f59e0b">
+              <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"/>
+            </svg>
+          </div>
+          <div class="stat-info">
+            <h3 class="stat-number">3</h3>
+            <p class="stat-label">Entretiens prévus</p>
+          </div>
+          <a href="/applications" class="stat-link">Calendrier →</a>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon" style="background-color: rgba(139, 92, 246, 0.1);">
+            <svg width="24" height="24" viewBox="0 0 20 20" fill="#8b5cf6">
+              <path d="M2 10.5a1.5 1.5 0 113 0v6a1.5 1.5 0 01-3 0v-6zM6 10.333v5.43a2 2 0 001.106 1.79l.05.025A4 4 0 008.943 18h5.416a2 2 0 001.962-1.608l1.2-6A2 2 0 0015.56 8H12V4a2 2 0 00-2-2 1 1 0 00-1 1v.667a4 4 0 01-.8 2.4L6.8 7.933a4 4 0 00-.8 2.4z"/>
+            </svg>
+          </div>
+          <div class="stat-info">
+            <h3 class="stat-number">87%</h3>
+            <p class="stat-label">Profil complété</p>
+          </div>
+          <a href="/profile" class="stat-link">Compléter →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content Grid -->
+  <section class="content-section">
+    <div class="container">
+      <div class="content-grid">
+        <!-- Recent Applications -->
+        <div class="content-block">
+          <div class="block-header">
+            <h2 class="block-title">
+              <svg width="24" height="24" viewBox="0 0 20 20" fill="currentColor">
+                <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z"/>
+                <path fill-rule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z" clip-rule="evenodd"/>
+              </svg>
+              Candidatures récentes
+            </h2>
+            <a href="/applications" class="block-link">Voir tout</a>
+          </div>
+
+          <div class="applications-list">
+            <div class="application-item">
+              <div class="application-logo">
+                <svg width="40" height="40" viewBox="0 0 48 48" fill="none">
+                  <rect width="48" height="48" rx="10" fill="#3b82f6"/>
+                  <text x="50%" y="50%" text-anchor="middle" dy=".3em" fill="white" font-size="18" font-weight="bold">TC</text>
+                </svg>
+              </div>
+              <div class="application-details">
+                <h4 class="application-title">Développeur Full Stack</h4>
+                <p class="application-company">TechCorp Solutions</p>
+                <p class="application-date">Candidature envoyée il y a 2 jours</p>
+              </div>
+              <span class="badge badge-warning">En attente</span>
+            </div>
+
+            <div class="application-item">
+              <div class="application-logo">
+                <svg width="40" height="40" viewBox="0 0 48 48" fill="none">
+                  <rect width="48" height="48" rx="10" fill="#10b981"/>
+                  <text x="50%" y="50%" text-anchor="middle" dy=".3em" fill="white" font-size="18" font-weight="bold">DI</text>
+                </svg>
+              </div>
+              <div class="application-details">
+                <h4 class="application-title">Designer UI/UX Senior</h4>
+                <p class="application-company">Digital Innovations</p>
+                <p class="application-date">Candidature envoyée il y a 5 jours</p>
+              </div>
+              <span class="badge badge-success">Accepté</span>
+            </div>
+
+            <div class="application-item">
+              <div class="application-logo">
+                <svg width="40" height="40" viewBox="0 0 48 48" fill="none">
+                  <rect width="48" height="48" rx="10" fill="#8b5cf6"/>
+                  <text x="50%" y="50%" text-anchor="middle" dy=".3em" fill="white" font-size="18" font-weight="bold">DS</text>
+                </svg>
+              </div>
+              <div class="application-details">
+                <h4 class="application-title">Data Scientist</h4>
+                <p class="application-company">DataSmart Analytics</p>
+                <p class="application-date">Candidature envoyée il y a 1 semaine</p>
+              </div>
+              <span class="badge badge-warning">En attente</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Recommended Jobs -->
+        <div class="content-block">
+          <div class="block-header">
+            <h2 class="block-title">
+              <svg width="24" height="24" viewBox="0 0 20 20" fill="currentColor">
+                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+              </svg>
+              Recommandés pour vous
+            </h2>
+            <a href="/jobs" class="block-link">Explorer</a>
+          </div>
+
+          <div class="recommended-list">
+            <div class="recommended-item">
+              <div class="recommended-content">
+                <h4 class="recommended-title">Architecte Cloud AWS</h4>
+                <p class="recommended-company">CloudTech Solutions • Casablanca</p>
+                <div class="recommended-tags">
+                  <span class="tag-mini">AWS</span>
+                  <span class="tag-mini">Kubernetes</span>
+                  <span class="tag-mini">DevOps</span>
+                </div>
+              </div>
+              <button class="btn-icon-small">
+                <svg width="18" height="18" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"/>
+                </svg>
+              </button>
+            </div>
+
+            <div class="recommended-item">
+              <div class="recommended-content">
+                <h4 class="recommended-title">Product Manager</h4>
+                <p class="recommended-company">StartupHub • Remote</p>
+                <div class="recommended-tags">
+                  <span class="tag-mini">Agile</span>
+                  <span class="tag-mini">SaaS</span>
+                  <span class="tag-mini">Leadership</span>
+                </div>
+              </div>
+              <button class="btn-icon-small">
+                <svg width="18" height="18" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"/>
+                </svg>
+              </button>
+            </div>
+
+            <div class="recommended-item">
+              <div class="recommended-content">
+                <h4 class="recommended-title">DevOps Engineer</h4>
+                <p class="recommended-company">TechFlow Inc • Rabat</p>
+                <div class="recommended-tags">
+                  <span class="tag-mini">Docker</span>
+                  <span class="tag-mini">Jenkins</span>
+                  <span class="tag-mini">CI/CD</span>
+                </div>
+              </div>
+              <button class="btn-icon-small active">
+                <svg width="18" height="18" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"/>
+                </svg>
+              </button>
+            </div>
+
+            <div class="recommended-item">
+              <div class="recommended-content">
+                <h4 class="recommended-title">Scrum Master</h4>
+                <p class="recommended-company">Agile Works • Casablanca</p>
+                <div class="recommended-tags">
+                  <span class="tag-mini">Scrum</span>
+                  <span class="tag-mini">Jira</span>
+                  <span class="tag-mini">Coaching</span>
+                </div>
+              </div>
+              <button class="btn-icon-small">
+                <svg width="18" height="18" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"/>
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Tips -->
+      <div class="tips-banner">
+        <div class="tip-icon">
+          <svg width="24" height="24" viewBox="0 0 20 20" fill="currentColor">
+            <path d="M11 3a1 1 0 10-2 0v1a1 1 0 102 0V3zM15.657 5.757a1 1 0 00-1.414-1.414l-.707.707a1 1 0 001.414 1.414l.707-.707zM18 10a1 1 0 01-1 1h-1a1 1 0 110-2h1a1 1 0 011 1zM5.05 6.464A1 1 0 106.464 5.05l-.707-.707a1 1 0 00-1.414 1.414l.707.707zM5 10a1 1 0 01-1 1H3a1 1 0 110-2h1a1 1 0 011 1zM8 16v-1h4v1a2 2 0 11-4 0zM12 14c.015-.34.208-.646.477-.859a4 4 0 10-4.954 0c.27.213.462.519.476.859h4.002z"/>
+          </svg>
+        </div>
+        <div class="tip-content">
+          <h3 class="tip-title">Conseil de la journée</h3>
+          <p class="tip-text">
+            Complétez votre profil à 100% pour augmenter vos chances d'être remarqué par les recruteurs. 
+            Il vous reste seulement 13% à compléter!
+          </p>
+        </div>
+        <button class="btn btn-outline btn-sm">Compléter mon profil</button>
+      </div>
+    </div>
+  </section>
+</div>
