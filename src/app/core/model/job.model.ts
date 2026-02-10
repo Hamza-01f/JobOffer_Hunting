@@ -26,7 +26,7 @@ export interface Job{
     contents: string;
     locations: JobLocation[];
     levels: JobLevel[];
-    company: JobCompany[];
+    company: JobCompany;
     categories: string[];
     tags: string[];
     refs: JobRefs;

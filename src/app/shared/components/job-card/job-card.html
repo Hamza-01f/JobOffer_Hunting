@@ -1,1 +1,119 @@
-<p>job-card works!</p>
+<div class="job-card">
+
+  <div class="job-card-header">
+
+    <div class="company-logo">
+      <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+        <rect width="48" height="48" rx="12" fill="#10b981"/>
+
+        <!-- first letter of company -->
+        <text x="50%" y="50%" text-anchor="middle" dy=".3em"
+              fill="white" font-size="20" font-weight="bold">
+          {{ job.company?.name?.[0] || '?' }}
+        </text>
+
+      </svg>
+    </div>
+
+    <div class="job-meta">
+
+      <!-- job type -->
+      <span class="badge badge-success">
+        {{ job.type || 'N/A' }}
+      </span>
+
+      <!-- publication date -->
+      <span class="job-date">
+        {{ job.publication_date | date:'mediumDate' }}
+      </span>
+
+    </div>
+
+  </div>
+
+  <div class="job-card-body">
+
+    <!-- job title -->
+    <h3 class="job-title">
+      {{ job.name }}
+    </h3>
+
+    <div class="company-info">
+
+      <!-- company name -->
+      <span class="company-name">
+        {{ job.company?.name || 'Unknown company' }}
+      </span>
+
+      <!-- first location if exists -->
+      <span class="job-location" *ngIf="job.locations?.length">
+
+        <svg width="16" height="16" viewBox="0 0 20 20" fill="currentColor">
+          <path fill-rule="evenodd"
+            d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"
+            clip-rule="evenodd"/>
+        </svg>
+
+        {{ job.locations?.[0]?.name }}
+
+      </span>
+
+    </div>
+
+    <!-- short description -->
+    <p class="job-description"
+       [innerHTML]="(job.contents || '') | slice:0:180">
+    </p>
+
+    <!-- seniority / level -->
+   <div class="job-tags" *ngIf="job.levels && job.levels.length">
+
+      <span class="tag" *ngFor="let level of job.levels">
+        {{ level?.name }}
+      </span>
+
+    </div>
+
+    <div class="job-footer">
+
+      <div class="salary-info">
+
+        <svg width="18" height="18" viewBox="0 0 20 20" fill="currentColor">
+          <path fill-rule="evenodd"
+            d="M10 18a8 8 0 100-16 8 8 0 000 16z"
+            clip-rule="evenodd"/>
+        </svg>
+
+        <span class="salary">
+          Job ID : {{ job.id }}
+        </span>
+
+      </div>
+
+      <div class="job-actions">
+
+        <button class="btn-icon" title="Ajouter aux favoris">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd"
+              d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"
+              clip-rule="evenodd"/>
+          </svg>
+        </button>
+
+        <!-- landing page from API -->
+        <a
+          class="btn btn-primary btn-sm"
+          [href]="job.refs?.landing_page"
+          target="_blank"
+          *ngIf="job.refs?.landing_page"
+        >
+          Voir l'offre
+        </a>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
