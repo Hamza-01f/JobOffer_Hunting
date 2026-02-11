@@ -1,0 +1,36 @@
+<!-- Search Form -->
+<div class="search-card fade-in">
+    <form class="search-form" [formGroup]="form" (ngSubmit)="submit()">
+    <div class="search-input-group">
+        <svg class="search-icon" width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+        <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"/>
+        </svg>
+        <input 
+        type="text" 
+        class="search-input" 
+        formControlName="keyword"
+        placeholder="Titre du poste (ex: Développeur Angular)"
+        />
+    </div>
+    
+    <div class="search-input-group">
+        <svg class="search-icon" width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+        <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/>
+        </svg>
+        <select class="search-select"  formControlName="level">
+        <option value="">Job Level</option>
+        <option value="Internship">Internship</option>
+        <option value="Senior Level">Senior Level</option>
+        <option value="Med Level">Mid Level</option>
+        <option value="Entry Level">Entry Level</option>
+        </select>
+    </div>
+    
+    <button type="submit" class="btn btn-primary search-btn"  >
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+        <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"/>
+        </svg>
+        Rechercher
+    </button>
+    </form>
+</div>

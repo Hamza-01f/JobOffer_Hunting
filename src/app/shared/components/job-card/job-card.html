@@ -1,98 +1,89 @@
+
 <div class="job-card">
-
+  <!-- Header Section -->
   <div class="job-card-header">
-
     <div class="company-logo">
-      <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
-        <rect width="48" height="48" rx="12" fill="#10b981"/>
-
-        <!-- first letter of company -->
+      <svg width="56" height="56" viewBox="0 0 56 56" fill="none">
+        <!-- <rect width="56" height="56" rx="14" [attr.fill]="getCompanyColor(job.company?.name)"/> -->
         <text x="50%" y="50%" text-anchor="middle" dy=".3em"
-              fill="white" font-size="20" font-weight="bold">
+              fill="white" font-size="24" font-weight="bold">
           {{ job.company?.name?.[0] || '?' }}
         </text>
-
       </svg>
     </div>
 
     <div class="job-meta">
-
-      <!-- job type -->
-      <span class="badge badge-success">
+      <!-- Job Type Badge -->
+      <span class="badge">
         {{ job.type || 'N/A' }}
       </span>
 
-      <!-- publication date -->
+      <!-- Publication Date -->
       <span class="job-date">
+        <svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor">
+          <path fill-rule="evenodd" 
+            d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" 
+            clip-rule="evenodd"/>
+        </svg>
         {{ job.publication_date | date:'mediumDate' }}
       </span>
-
     </div>
-
   </div>
 
+  <!-- Body Section -->
   <div class="job-card-body">
-
-    <!-- job title -->
-    <h3 class="job-title">
+    <!-- Job Title -->
+    <h3 class="job-title" [title]="job.name">
       {{ job.name }}
     </h3>
 
+    <!-- Company Info -->
     <div class="company-info">
-
-      <!-- company name -->
+      <!-- Company Name -->
       <span class="company-name">
+        <svg width="16" height="16" viewBox="0 0 20 20" fill="currentColor">
+          <path fill-rule="evenodd" 
+            d="M4 4a2 2 0 012-2h8a2 2 0 012 2v12a1 1 0 110 2h-3a1 1 0 01-1-1v-2a1 1 0 00-1-1H9a1 1 0 00-1 1v2a1 1 0 01-1 1H4a1 1 0 110-2V4zm3 1h2v2H7V5zm2 4H7v2h2V9zm2-4h2v2h-2V5zm2 4h-2v2h2V9z" 
+            clip-rule="evenodd"/>
+        </svg>
         {{ job.company?.name || 'Unknown company' }}
       </span>
 
-      <!-- first location if exists -->
+      <!-- Location -->
       <span class="job-location" *ngIf="job.locations?.length">
-
         <svg width="16" height="16" viewBox="0 0 20 20" fill="currentColor">
           <path fill-rule="evenodd"
             d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"
             clip-rule="evenodd"/>
         </svg>
-
         {{ job.locations?.[0]?.name }}
-
       </span>
-
     </div>
 
-    <!-- short description -->
-    <p class="job-description"
-       [innerHTML]="(job.contents || '') | slice:0:180">
+    <!-- Job Description -->
+    <p class="job-description" [innerHTML]="(job.contents || '') | slice:0:150">
     </p>
+    <span class="read-more" *ngIf="job.contents?.length > 150">...</span>
 
-    <!-- seniority / level -->
-   <div class="job-tags" *ngIf="job.levels && job.levels.length">
-
-      <span class="tag" *ngFor="let level of job.levels">
+    <!-- Tags/Levels -->
+    <div class="job-tags" *ngIf="job.levels && job.levels.length">
+      <span class="tag" *ngFor="let level of job.levels; let i = index" 
+            [class.hidden]="i >= 3">
         {{ level?.name }}
       </span>
-
+      <span class="tag tag-more" *ngIf="job.levels.length > 3">
+        +{{ job.levels.length - 3 }}
+      </span>
     </div>
 
+    <!-- Footer Actions -->
     <div class="job-footer">
-
-      <div class="salary-info">
-
-        <svg width="18" height="18" viewBox="0 0 20 20" fill="currentColor">
-          <path fill-rule="evenodd"
-            d="M10 18a8 8 0 100-16 8 8 0 000 16z"
-            clip-rule="evenodd"/>
-        </svg>
-
-        <span class="salary">
-          Job ID : {{ job.id }}
-        </span>
-
-      </div>
-
       <div class="job-actions">
-
-        <button class="btn-icon" title="Ajouter aux favoris">
+        <!-- Favorite Button -->
+        <button 
+          *ngIf="authservice.isAuthenticated()"
+          class="btn-icon" 
+          [title]="'Ajouter aux favoris'">
           <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
             <path fill-rule="evenodd"
               d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"
@@ -100,20 +91,36 @@
           </svg>
         </button>
 
-        <!-- landing page from API -->
+        <!-- Apply Button -->
+        <button   
+          *ngIf="authservice.isAuthenticated()"
+          class="btn btn-apply">
+          <svg width="18" height="18" viewBox="0 0 20 20" fill="currentColor">
+            <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/>
+            <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/>
+          </svg>
+          Postuler
+        </button>
+
+        <!-- View Offer Button -->
         <a
-          class="btn btn-primary btn-sm"
+          class="btn btn-primary btn-view"
           [href]="job.refs?.landing_page"
           target="_blank"
           *ngIf="job.refs?.landing_page"
-        >
-          Voir l'offre
+          rel="noopener noreferrer">
+          <svg width="18" height="18" viewBox="0 0 20 20" fill="currentColor">
+            <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"/>
+            <path fill-rule="evenodd" 
+              d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" 
+              clip-rule="evenodd"/>
+          </svg>
+          Détails
         </a>
-
       </div>
-
     </div>
-
   </div>
 
+  <!-- Hover Overlay Effect -->
+  <div class="card-overlay"></div>
 </div>

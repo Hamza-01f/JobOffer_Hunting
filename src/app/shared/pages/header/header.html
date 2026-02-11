@@ -1,0 +1,140 @@
+<header class="header">
+  <div class="header-container">
+
+    <!-- Logo -->
+    <div class="header-logo">
+      <a routerLink="/" class="logo-link">
+        <!-- your svg unchanged -->
+        <span class="logo-text">JobFinder</span>
+      </a>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="header-nav">
+      <a routerLink="/" class="nav-link active">Accueil</a>
+
+      <!-- ONLY when logged in -->
+      <a
+        *ngIf="auth.isAuthenticated()"
+        routerLink="/favorites"
+        class="nav-link">
+
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+          <path d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"/>
+        </svg>
+        Favoris
+      </a>
+
+      <!-- ONLY when logged in -->
+      <a
+        *ngIf="auth.isAuthenticated()"
+        routerLink="/applications"
+        class="nav-link">
+        Mes candidatures
+      </a>
+    </nav>
+
+    <!-- User Actions -->
+    <div class="header-actions">
+
+      <!-- NOT logged in -->
+      <div class="auth-buttons" *ngIf="!auth.isAuthenticated()">
+        <a (click)="login()" class="btn btn-outline btn-sm">Connexion</a>
+        <a (click)="register()" class="btn btn-primary btn-sm">S'inscrire</a>
+      </div>
+
+      <!-- Logged in -->
+      <div class="user-menu" *ngIf="auth.isAuthenticated()">
+
+        <button class="user-menu-button" type="button">
+          <div class="user-avatar">
+            <span>U</span>
+          </div>
+          <span class="user-name">Mon compte</span>
+          <svg class="chevron-icon" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+            <path d="M4 6l4 4 4-4"/>
+          </svg>
+        </button>
+
+        <div class="user-dropdown">
+          <a routerLink="/profile" class="dropdown-item">
+            Mon profil
+          </a>
+
+          <a routerLink="/applications" class="dropdown-item">
+            Mes candidatures
+          </a>
+
+          <a routerLink="/favorites" class="dropdown-item">
+            Favoris
+          </a>
+
+          <hr class="dropdown-divider">
+
+          <button
+            type="button"
+            class="dropdown-item logout-btn"
+            (click)="logout()">
+            Déconnexion
+          </button>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- Mobile Menu Toggle -->
+    <button class="mobile-menu-toggle" type="button">
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+    </button>
+  </div>
+
+  <!-- Mobile Navigation -->
+  <div class="mobile-nav">
+
+    <a routerLink="/" class="mobile-nav-link">Accueil</a>
+
+    <!-- logged in only -->
+    <a
+      *ngIf="auth.isAuthenticated()"
+      routerLink="/favorites"
+      class="mobile-nav-link">
+      Favoris
+    </a>
+
+    <a
+      *ngIf="auth.isAuthenticated()"
+      routerLink="/applications"
+      class="mobile-nav-link">
+      Mes candidatures
+    </a>
+
+    <hr class="mobile-nav-divider" *ngIf="auth.isAuthenticated()">
+
+    <!-- logged out only -->
+    <a
+      *ngIf="!auth.isAuthenticated()"
+      routerLink="/login"
+      class="mobile-nav-link">
+      Connexion
+    </a>
+
+    <a
+      *ngIf="!auth.isAuthenticated()"
+      routerLink="/register"
+      class="mobile-nav-link">
+      S'inscrire
+    </a>
+
+    <!-- logged in only -->
+    <a
+      *ngIf="auth.isAuthenticated()"
+      (click)="logout()"
+      class="mobile-nav-link">
+      Déconnexion
+    </a>
+
+  </div>
+</header>

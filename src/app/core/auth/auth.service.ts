@@ -41,8 +41,10 @@ export class authService{
         return !!sessionStorage.getItem('user');
     }
 
+
     getLoggedInUser(){
         const data = sessionStorage.getItem('user');
-        return data ? JSON.stringify(data) : null;
+        return data ? JSON.parse(data) : null;
     }
+
 }

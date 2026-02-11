@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
-import { Job } from '../../../core/model/job.model';
+import { authService } from '../../../core/auth/auth.service';
 
 @Component({
   selector: 'app-job-card',
@@ -12,4 +12,8 @@ export class JobCard {
 
   @Input() job!: any;
 
+
+  constructor(public authservice: authService){
+    this.authservice.isAuthenticated();
+  }
 }

@@ -5,6 +5,7 @@ import { Login } from './features/auth/login/login';
 import { Register } from './features/auth/register/register';
 import { Features } from './features/features';
 import { Home } from './features/jobs/pages/home/home';
+import { ApplicationComponent } from './features/jobs/pages/application/application';
 
 export const routes: Routes = [
     {
@@ -18,6 +19,10 @@ export const routes: Routes = [
             {
                 path : 'home',
                 component : Home
+            },
+            {
+                path : 'applications',
+                component : ApplicationComponent
             }
         ]
     },
