@@ -27,9 +27,6 @@ export class authService{
         .set('email' , email)
         .set('password', password)
         return this.http.get<any[]>(AUTH_API.LOGIN,{ params })
-        //   return this.http.get<Register[]>(
-        //     `${AUTH_API.LOGIN}?email=${email}&password=${password}`
-        // );
     }
 
     logout(){

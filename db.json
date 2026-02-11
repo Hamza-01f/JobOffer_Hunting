@@ -15,6 +15,32 @@
       "id": 2
     }
   ],
-  "applications" : [],
-  "favorites" : []
+  "applications": [
+    {
+      "userId": 1,
+      "offerId": "20974219",
+      "apiSource": "adzuna",
+      "company": "Uber",
+      "location": "no location provided",
+      "url": "https://www.themuse.com/jobs/uber/account-executive-smb-ubereats-southern-california-labased",
+      "status": "en_attente",
+      "notes": "Candidature envoyée le 10/02/2025. Relancer dans 2 semaines.",
+      "dateAdded": "2026-02-11T14:55:23.727Z",
+      "id": 1
+    },
+    {
+      "userId": 1,
+      "offerId": "18140050",
+      "apiSource": "adzuna",
+      "title": "no title provided",
+      "company": "SAS Retail Services",
+      "location": "Reading, PA",
+      "url": "https://www.themuse.com/jobs/sasretailservices/travel-retail-sales-merchandiser-00faa4",
+      "status": "en_attente",
+      "notes": "Candidature envoyée le 10/02/2025. Relancer dans 2 semaines.",
+      "dateAdded": "2026-02-11T15:23:39.894Z",
+      "id": 2
+    }
+  ],
+  "favorites": []
 }

@@ -1,7 +1,7 @@
 export interface Application{
     id?: number;
     userId: number;
-    offerId: number;
+    offerId: string;
     apiSource: string;
     title: string;
     company: string;

@@ -57,7 +57,9 @@
 
         <app-job-card
             *ngFor="let job of jobs"
-            [job]="job">
+            [job]="job"
+            [alreadyApplied]="appliedOffersId.has(job.id)"
+            (apply)="onApplyJob($event)">
         </app-job-card>
 
         </div>
