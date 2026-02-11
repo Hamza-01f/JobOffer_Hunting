@@ -1,52 +1,93 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { authService } from '../../../../core/auth/auth.service';
-import { ApplicationService } from '../../services/application.service';
 import { Application } from '../../../../core/model/application.model';
+import { ApplicationService } from '../../services/application.service';
+import { authService } from '../../../../core/auth/auth.service';
 
 @Component({
   selector: 'app-application',
+  standalone: true,
   imports: [CommonModule],
   templateUrl: './application.html',
-  styleUrl: './application.scss',
+  styleUrl: './application.scss'
 })
 export class ApplicationComponent implements OnInit {
 
-  appliedOffersId = new Set<string>();
-  userId: number;
   myApplications: Application[] = [];
-
+  userId!: number;
 
   constructor(
-    private authservice: authService,
+    private authService: authService,
     private applicationService: ApplicationService
-  ){
-    const user = authservice.getLoggedInUser();
+  ) {}
+
+  ngOnInit() {
+
+    const user = this.authService.getLoggedInUser();
     this.userId = user?.id;
+
+    if (this.userId) {
+      this.loadMyApplications();
+    }
   }
 
-  loadMyOffers(){
-     this.applicationService.getByUser(this.userId).subscribe(apps => {
-       console.log(apps)
-       this.appliedOffersId.clear();
-       apps.forEach(a => this.appliedOffersId.add(a.offerId));
-     });
+  loadMyApplications() {
+    this.applicationService.getByUser(this.userId)
+      .subscribe(apps => {
+        this.myApplications = apps;
+      });
   }
 
-  ngOnInit(): void {
-    this.loadMyOffers();
+  changeStatus(app: Application, status: Application['status']) {
+
+    const updated: Application = {
+      ...app,
+      status
+    };
+
+    this.applicationService.update(app.id!, updated)
+      .subscribe(() => {
+        app.status = status;
+      });
   }
 
-
-  changeStatus(app: Application , status: Application['status']){
-      this.applicationService.update(app.id! , { status }).subscribe(() => app.status = status);
+  delete(app: Application) {
+    this.applicationService.delete(app.id!)
+      .subscribe(() => {
+        this.myApplications =
+          this.myApplications.filter(a => a.id !== app.id);
+      });
   }
 
-  updateNotes(app: Application , notes: string){
-       this.applicationService.update(app.id! , {notes}).subscribe(() => app.notes = notes);
+  getStatusLabel(status: Application['status']) {
+    switch (status) {
+      case 'en_attente': return 'En attente';
+      case 'accepte': return 'Accepté';
+      case 'refuse': return 'Refusé';
+    }
   }
 
-  delete(app: Application){
-    this.applicationService.delete(app.id!).subscribe(() => this.myApplications.filter( a => a.id !== app.id));
+  getStatusClass(status: Application['status']) {
+    return {
+      'status-en-attente': status === 'en_attente',
+      'status-accepte': status === 'accepte',
+      'status-refuse': status === 'refuse'
+    };
+  }
+
+  getPendingCount(){
+    return this.myApplications.filter(m => m.status === 'en_attente').length;
+  }
+
+  getRefusedCount(){
+    return this.myApplications.filter(m => m.status === 'refuse').length;
+  }
+
+  getTotalCount(){
+    return this.myApplications.filter(m => m.status === 'accepte').length;
+  }
+
+  getAcceptedCount(){
+    return this.myApplications.length;
   }
 }

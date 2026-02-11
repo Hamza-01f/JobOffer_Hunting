@@ -4,6 +4,7 @@
      ========================================== -->
 
 <div class="applications-page">
+
   <!-- Page Header -->
   <section class="page-header">
     <div class="container">
@@ -16,174 +17,202 @@
             </svg>
             Mes Candidatures
           </h1>
-          <p class="page-subtitle">Suivez et gérez toutes vos candidatures en un seul endroit</p>
+          <p class="page-subtitle">
+            Suivez et gérez toutes vos candidatures en un seul endroit
+          </p>
         </div>
 
-        <!-- <div class="header-stats">
+        <div class="header-stats">
           <div class="stat-item">
-            <div class="stat-value">{{myApplications.length}}</div>
+            <div class="stat-value">{{ myApplications.length }}</div>
             <div class="stat-label">Total</div>
           </div>
           <div class="stat-item stat-warning">
-            <div class="stat-value">{{myApplications.filter(a => a.status === 'en_attente').length}}</div>
+            <div class="stat-value">
+              {{getPendingCount()}}
+            </div>
             <div class="stat-label">En attente</div>
           </div>
           <div class="stat-item stat-success">
-            <div class="stat-value">{{myApplications.filter(a => a.status === 'accepte').length}}</div>
+            <div class="stat-value">
+              {{getAcceptedCount()}}
+            </div>
             <div class="stat-label">Acceptées</div>
           </div>
           <div class="stat-item stat-error">
-            <div class="stat-value">{{myApplications.filter(a => a.status === 'refuse').length}}</div>
+            <div class="stat-value">
+              {{getRefusedCount()}}
+            </div>
             <div class="stat-label">Refusées</div>
           </div>
-        </div> -->
+        </div>
       </div>
     </div>
   </section>
-
 
   <!-- Applications Grid -->
   <section class="applications-content">
     <div class="container">
       <div class="applications-grid">
-        
-        <!-- Application Card 1 - En attente -->
-        <div class="application-card" data-status="en_attente" *ngFor="let app of myApplications">
+
+        <!-- Application Card -->
+        <div
+          class="application-card"
+          *ngFor="let app of myApplications"
+          [attr.data-status]="app.status">
+
           <div class="application-header">
+
             <div class="application-logo">
               <svg width="56" height="56" viewBox="0 0 56 56" fill="none">
                 <rect width="56" height="56" rx="14" fill="#3b82f6"/>
-                <text x="50%" y="50%" text-anchor="middle" dy=".3em" fill="white" font-size="24" font-weight="bold">E</text>
+                <text x="50%" y="50%" text-anchor="middle" dy=".3em"
+                      fill="white" font-size="24" font-weight="bold">
+                  {{ app.company?.charAt(0) || 'C' }}
+                </text>
               </svg>
             </div>
 
+            <!-- STATUS SELECTOR -->
             <div class="status-selector">
-              <button class="status-badge status-en-attente">
+
+              <button
+                class="status-badge"
+                [ngClass]="getStatusClass(app.status)">
+
                 <svg width="16" height="16" viewBox="0 0 20 20" fill="currentColor">
-                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"/>
+                  <path fill-rule="evenodd"
+                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z"
+                        clip-rule="evenodd"/>
                 </svg>
-                <span>En attente</span>
+
+                <span>{{ getStatusLabel(app.status) }}</span>
+
                 <svg class="chevron" width="12" height="12" viewBox="0 0 20 20" fill="currentColor">
-                  <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                  <path fill-rule="evenodd"
+                        d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                        clip-rule="evenodd"/>
                 </svg>
               </button>
 
               <div class="status-dropdown">
-                <button class="status-option status-en-attente"
-                (click)="changeStatus(app, 'en_attente')">
-                  <svg width="16" height="16" viewBox="0 0 20 20" fill="currentColor">
-                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"/>
-                  </svg>
+
+                <button
+                  class="status-option status-en-attente"
+                  (click)="changeStatus(app, 'en_attente')">
                   En attente
                 </button>
-                <button class="status-option status-accepte"
-                (click)="changeStatus(app, 'accepte')">
-                  <svg width="16" height="16" viewBox="0 0 20 20" fill="currentColor">
-                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-                  </svg>
+
+                <button
+                  class="status-option status-accepte"
+                  (click)="changeStatus(app, 'accepte')">
                   Accepté
                 </button>
-                <button class="status-option status-refuse"
-                (click)="changeStatus(app,'refuse')">
-                  <svg width="16" height="16" viewBox="0 0 20 20" fill="currentColor">
-                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"/>
-                  </svg>
+
+                <button
+                  class="status-option status-refuse"
+                  (click)="changeStatus(app, 'refuse')">
                   Refusé
                 </button>
+
               </div>
             </div>
 
-            <button class="delete-btn" title="Supprimer cette candidature"
-            (click)="delete(app)">
+            <button
+              class="delete-btn"
+              title="Supprimer cette candidature"
+              (click)="delete(app)">
               <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
-                <path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd"/>
+                <path fill-rule="evenodd"
+                      d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z"
+                      clip-rule="evenodd"/>
               </svg>
             </button>
           </div>
 
           <div class="application-body">
-            <h3 class="application-title">{{app.title}}</h3>
+
+            <h3 class="application-title">{{ app.title }}</h3>
 
             <div class="application-info">
+
               <span class="company-name">
-                <svg width="16" height="16" viewBox="0 0 20 20" fill="currentColor">
-                  <path fill-rule="evenodd" d="M4 4a2 2 0 012-2h8a2 2 0 012 2v12a1 1 0 110 2h-3a1 1 0 01-1-1v-2a1 1 0 00-1-1H9a1 1 0 00-1 1v2a1 1 0 01-1 1H4a1 1 0 110-2V4zm3 1h2v2H7V5zm2 4H7v2h2V9zm2-4h2v2h-2V5zm2 4h-2v2h2V9z" clip-rule="evenodd"/>
-                </svg>
-                {{app.company}}
+                {{ app.company }}
               </span>
 
               <span class="location">
-                <svg width="16" height="16" viewBox="0 0 20 20" fill="currentColor">
-                  <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/>
-                </svg>
-                {{app.location}}
+                {{ app.location }}
               </span>
+
             </div>
 
             <div class="application-date">
-              <svg width="16" height="16" viewBox="0 0 20 20" fill="currentColor">
-                <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"/>
-              </svg>
-              <span>Candidature envoyée le <strong>{{app.dateAdded}}</strong></span>
+              <span>
+                Candidature envoyée le
+                <strong>{{ app.dateAdded | date:'dd/MM/yyyy' }}</strong>
+              </span>
             </div>
 
             <div class="notes-section">
+
               <div class="notes-header">
-                <svg width="16" height="16" viewBox="0 0 20 20" fill="currentColor">
-                  <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z"/>
-                </svg>
-                <span class="notes-label">{{app.notes}}</span>
-                <button class="edit-notes-btn">
-                  <svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor">
-                    <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z"/>
-                  </svg>
-                  Modifier
-                </button>
+                <span class="notes-label">Notes</span>
               </div>
 
               <div class="notes-content">
-                <p class="notes-text">{{app.notes}}</p>
+                <p class="notes-text">
+                  {{ app.notes || 'Aucune note' }}
+                </p>
               </div>
+
             </div>
 
             <div class="application-actions">
-              <a href="#" class="btn btn-outline btn-sm" target="_blank">
-                <svg width="16" height="16" viewBox="0 0 20 20" fill="currentColor">
-                  <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"/>
-                  <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"/>
-                </svg>
+              <a
+                [href]="app.url"
+                class="btn btn-outline btn-sm"
+                target="_blank">
                 Voir l'offre
               </a>
             </div>
+
           </div>
 
           <div class="timeline-indicator">
             <div class="timeline-dot active"></div>
             <div class="timeline-line"></div>
           </div>
+
         </div>
       </div>
 
-      <!-- Empty State (show when no applications) -->
-      <div class="empty-state" style="display: none;" *ngIf="myApplications.length == 0">
+      <!-- Empty State -->
+      <div
+        class="empty-state"
+        *ngIf="myApplications.length === 0">
+
         <div class="empty-icon">
           <svg width="120" height="120" viewBox="0 0 20 20" fill="currentColor">
             <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z"/>
-            <path fill-rule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z" clip-rule="evenodd"/>
+            <path fill-rule="evenodd"
+                  d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z"
+                  clip-rule="evenodd"/>
           </svg>
         </div>
+
         <h2 class="empty-title">Aucune candidature</h2>
+
         <p class="empty-text">
-          Vous n'avez pas encore postulé à des offres d'emploi. 
+          Vous n'avez pas encore postulé à des offres d'emploi.
           Commencez à parcourir les offres disponibles.
         </p>
-        <a href="/jobs" class="btn btn-primary">
-          <svg width="18" height="18" viewBox="0 0 20 20" fill="currentColor">
-            <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"/>
-          </svg>
+
+        <a routerLink="/jobs" class="btn btn-primary">
           Parcourir les offres
         </a>
+
       </div>
     </div>
   </section>
+
 </div>
