@@ -11,12 +11,12 @@
 
     <!-- Navigation -->
     <nav class="header-nav">
-      <a routerLink="/" class="nav-link active">Accueil</a>
+      <a (click)="home()" class="nav-link active">Accueil</a>
 
       <!-- ONLY when logged in -->
       <a
         *ngIf="auth.isAuthenticated()"
-        routerLink="/favorites"
+        (click)="favorites()"
         class="nav-link">
 
         <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
@@ -28,7 +28,7 @@
       <!-- ONLY when logged in -->
       <a
         *ngIf="auth.isAuthenticated()"
-        routerLink="/applications"
+        (click)="applications()"
         class="nav-link">
         Mes candidatures
       </a>
@@ -57,15 +57,15 @@
         </button>
 
         <div class="user-dropdown">
-          <a routerLink="/profile" class="dropdown-item">
+          <a (click)="profile()" class="dropdown-item">
             Mon profil
           </a>
 
-          <a routerLink="/applications" class="dropdown-item">
+          <a (click)="applications()" class="dropdown-item">
             Mes candidatures
           </a>
 
-          <a routerLink="/favorites" class="dropdown-item">
+          <a (click)="favorites()" class="dropdown-item">
             Favoris
           </a>
 
@@ -106,7 +106,7 @@
 
     <a
       *ngIf="auth.isAuthenticated()"
-      routerLink="/applications"
+      (click)="applications()"
       class="mobile-nav-link">
       Mes candidatures
     </a>

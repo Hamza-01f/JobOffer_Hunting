@@ -11,5 +11,5 @@ import { RouterOutlet } from '@angular/router';
   styleUrl: './features.scss',
 })
 export class Features {
-
+        
 }

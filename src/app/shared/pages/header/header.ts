@@ -30,4 +30,21 @@ export class Header {
       this.router.navigate(['/register'])
   }
 
+  profile(){
+      this.router.navigate(['/profile'])
+
+  }
+
+  applications(){
+      this.router.navigate(['/applications'])
+  }
+
+  favorites(){
+      this.router.navigate(['/favorites'])
+  }
+
+  home(){
+      this.router.navigate(['/'])
+  }
+
 }

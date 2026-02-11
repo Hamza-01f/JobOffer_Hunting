@@ -6,6 +6,8 @@ import { Register } from './features/auth/register/register';
 import { Features } from './features/features';
 import { Home } from './features/jobs/pages/home/home';
 import { ApplicationComponent } from './features/jobs/pages/application/application';
+import { Profile } from './features/profile/profile';
+import { FavoritePage } from './features/jobs/pages/favorites/favorite-page/favorite-page';
 
 export const routes: Routes = [
     {
@@ -23,6 +25,14 @@ export const routes: Routes = [
             {
                 path : 'applications',
                 component : ApplicationComponent
+            },
+            {
+                path : 'profile',
+                component : Profile
+            },
+            {
+                path : 'favorites',
+                component : FavoritePage
             }
         ]
     },

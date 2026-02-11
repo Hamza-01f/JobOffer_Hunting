@@ -8,6 +8,7 @@ import { JobsService } from '../../services/jobs.service';
 import { JobCard } from '../../../../shared/components/job-card/job-card';
 import { Pagination } from '../../../../shared/components/pagination/pagination';
 import { Search } from '../../../../shared/components/search/search';
+import { ApplicationService } from '../../services/application.service';
 
 @Component({
   selector: 'app-landing',
@@ -27,7 +28,8 @@ export class Landing implements OnInit{
 
 
   constructor(
-    private jobsService: JobsService
+    private jobsService: JobsService,
+    private applicationService: ApplicationService
   ){}
 
 
